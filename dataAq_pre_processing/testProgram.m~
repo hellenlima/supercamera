@@ -22,9 +22,9 @@ end
 
 %% resizing all the objects to 28x28
 num_objects = 0; %%number of valid objects
-mnistlike_bounded_list = cell(0); %initilizing list
 
 for index=2:chars.NumObjects % object #1 is the background?
+    mnistlike_bounded_list = bounded_img_list;
     img_ind = bounded_img_list{index};
     img_size = size(img_ind);
     img_ind = img_ind/max(img_ind(:)); %normalizing
@@ -66,8 +66,7 @@ for index=2:chars.NumObjects % object #1 is the background?
             comp_end = comp_begin;
             final = [comp_begin comp_1 comp_end];
         end
-        mnistlike_bounded_list{num_objects} = final;
     end %%end eliminating lines 
+    mnistlike_bounded_list{index} = final;
 end %%end for
-%% proximo passo: salvar cada caracter como um jpg, cujo nome ? 'identificador-contador.jpg'
-%por exemplo: '01-003.jpg'
+%%

@@ -2,7 +2,8 @@ function [ clean, out ] = detectCharacters(filename,T1)
 %DETECTCHARACTERS Summary of this function goes here
 %   given a filename, this function will split in a list of characters
 %   contained in it
-A = double(rgb2gray(imresize(imread(filename),0.5)));
+%A = double(rgb2gray(imresize(imread(filename),1)));
+A = double(imresize(imread(filename),1));
 A = A/max(A(:));
 img_size = size(A);
 X = reshape(A, img_size(1) * img_size(2),1);
@@ -23,5 +24,6 @@ out = ~(X_recovered/max(X_recovered(:)));
 
 clean = bwareaopen(out,T1);
 clean = bwconncomp(clean);
+
 end
 
