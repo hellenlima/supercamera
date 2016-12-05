@@ -23,6 +23,7 @@ X_recovered = X_recovered - min(X_recovered(:));
 out = ~(X_recovered/max(X_recovered(:)));
 
 clean = bwareaopen(out,T1);
+%clean = bwareaopen(out,T1,4); %maybe its worth testing like this
 clean = bwconncomp(clean);
 
 end
